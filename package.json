@@ -1,0 +1,27 @@
+{
+	"name":         "confection",
+	"description":  "A configuration management server written in node, using redis for a backend.",
+	"author":       "Anthony Hildoer <anthony@bluerival.com>",
+	"version":      "0.0.1",
+	"repository":   {
+		"type": "git",
+		"url":  "git://github.com/bluerival/confection.git"
+	},
+	"dependencies": {
+		"express":         "~3",
+		"redis":           "~0",
+		"core-extensions": "~0"
+	},
+	"keywords":     [
+		"configuration",
+		"management",
+		"rest",
+		"api",
+		"redis",
+		"json"
+	],
+	"engines":      {
+		"node": "~0.8"
+	},
+	"license":      "MIT"
+}
