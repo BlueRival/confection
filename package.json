@@ -2,7 +2,7 @@
 	"name":         "confection",
 	"description":  "A configuration management server written in node, using redis for a backend.",
 	"author":       "Anthony Hildoer <anthony@bluerival.com>",
-	"version":      "0.0.1",
+	"version":      "0.1.0",
 	"repository":   {
 		"type": "git",
 		"url":  "git://github.com/bluerival/confection.git"
