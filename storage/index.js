@@ -68,15 +68,15 @@ module.exports.init = function ( params, callback ) {
 };
 
 module.exports.getConf = function ( key, callback ) {
-	getRaw( key, 'conf', callback );
+	getRaw( key, 'moduleConfig', callback );
 };
 
 module.exports.setConf = function ( key, conf, callback ) {
-	setRaw( key, 'conf', conf, callback );
+	setRaw( key, 'moduleConfig', conf, callback );
 };
 
 module.exports.delConf = function ( key, callback ) {
-	delRaw( key, 'conf', callback );
+	delRaw( key, 'moduleConfig', callback );
 };
 
 module.exports.isAuthorized = function ( key, callback ) {
@@ -126,13 +126,11 @@ function getRaw( key, type, callback ) {
 
 	client.get( encodeKey( key, type ), function ( err, data ) {
 
-		data = decodeData( data );
-
-		if ( err || !data ) {
-			executeCallback( callback, "could not retrieve " + type, null );
+		if ( err ) {
+			executeCallback( callback, err, null );
 		}
 		else {
-			executeCallback( callback, null, data );
+			executeCallback( callback, null, decodeData( data ) );
 		}
 
 	} );
