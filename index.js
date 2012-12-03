@@ -15,13 +15,14 @@ module.exports.run = function ( conf ) {
 	running = true;
 
 	conf = {
-		server:  {
+		server:        {
 			port: 8080
 		},
-		storage: {
+		storage:       {
 			host: 'localhost',
 			port: 6379
-		}
+		},
+		outputFilters: {}
 	}.mixin( conf );
 
 	storage.init( conf.storage, function ( err ) {
@@ -32,8 +33,9 @@ module.exports.run = function ( conf ) {
 			}
 			else {
 				core.init( {
-					express: express,
-					storage: storage
+					express:       express,
+					storage:       storage,
+					outputFilters: conf.outputFilters
 				}, function ( err ) {
 					if ( err ) {
 						console.error( 'could not start up core' );
