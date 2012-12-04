@@ -9,8 +9,7 @@ var running = false;
 module.exports.run = function ( conf ) {
 
 	if ( running ) {
-		console.error( 'confection service already running' );
-		return;
+		return this;
 	}
 	running = true;
 
@@ -19,8 +18,7 @@ module.exports.run = function ( conf ) {
 			port: 8080
 		},
 		storage:       {
-			host: 'localhost',
-			port: 6379
+			url: null
 		},
 		outputFilters: {}
 	}.mixin( conf );
@@ -51,4 +49,24 @@ module.exports.run = function ( conf ) {
 		}
 	);
 
+	return this;
+
+};
+
+module.exports.generateAuthKey = function ( callback ) {
+	if ( running ) {
+		storage.generateAuthKey( callback );
+	}
+	else {
+		callback( null );
+	}
+};
+
+module.exports.delAuthKey = function ( key, callback ) {
+	if ( running ) {
+		storage.delAuthKey( key, callback );
+	}
+	else {
+		callback( "server not running" );
+	}
 };
