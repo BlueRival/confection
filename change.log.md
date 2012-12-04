@@ -1,4 +1,4 @@
-Version 0.1.0
+Version 0.1.1
 ========
 
 * Structured configuration - Store structured configuration segments, and not just key/value pairs. Internally, everything is represented as JSON (though, output in other formats is possible).
